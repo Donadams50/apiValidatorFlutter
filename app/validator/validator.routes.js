@@ -3,7 +3,6 @@ module.exports = app => {
    
   
      app.get("/",   validators.getMyProfile);
-    
-
+     app.post("/validate-rule",   validators.validateRule);
   };
   
