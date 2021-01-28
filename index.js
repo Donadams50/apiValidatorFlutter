@@ -13,9 +13,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
- require("./app/product/product.routes.js")(app)
- require("./app/members/members.routes.js")(app)
- require("./app/cart/cart.routes.js")(app)
+//  require("./app/product/product.routes.js")(app)
+//  require("./app/members/members.routes.js")(app)
+//  require("./app/cart/cart.routes.js")(app)
 
 
 app.get("/", (req, res) => {
@@ -24,6 +24,6 @@ app.get("/", (req, res) => {
 
 
 // Connect to port
-const port = process.env.PORT || 4000     
+const port = process.env.PORT || 8000     
 
 app.listen(port, ()=> console.log(`listening on port ${port}...`)); 
