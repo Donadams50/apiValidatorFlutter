@@ -1,0 +1,21 @@
+{
+  "name": "nodejsbackendengineerflutter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "connect-timeout": "^1.9.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "nodemon": "^2.0.6"
+  },
+  "author": "Alaka Adam Olasumbo",
+  "license": "ISC"
+}
