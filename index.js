@@ -9,18 +9,7 @@ const path = require('path')
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-
-
-
-
-//  require("./app/product/product.routes.js")(app)
-//  require("./app/members/members.routes.js")(app)
-//  require("./app/cart/cart.routes.js")(app)
-
-
-app.get("/", (req, res) => {
-    res.json({ message: "Welcome to api validator  application." });
-  });
+require("./app/validator/validator.routes.js")(app)
 
 
 // Connect to port
