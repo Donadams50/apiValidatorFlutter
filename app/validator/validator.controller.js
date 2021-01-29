@@ -33,10 +33,185 @@ if (!req.body){
 
     const {  rule , data} = req.body;
   
-   
-        
+      const fieldName = rule.field;
+      const keys = Object.entries(data);
+      const h = keys.find(e => e[0] === fieldName);  
+        console.log(h[1]);
+
             try{   
-                
+                if (rule.condition === "gte"  ){
+                    if (h[1] >= rule.condition_value  ){
+                        res.status(200).send({          
+                            message: "field "+fieldName+" successfully validated.",
+                            status: "success",
+                            data:  {
+                                validation: {
+                                  error: false,
+                                  field: fieldName,
+                                  field_value: h[1],
+                                  condition: rule.condition,
+                                  condition_value: rule.condition_value,
+                                }
+                              }
+                          
+                    });
+
+                    }else{
+                        res.status(400).send({          
+                            message: "field "+fieldName+" failed validation.",
+                            status: "error",
+                            data:  {
+                                validation: {
+                                  error: true,
+                                  field: fieldName,
+                                  field_value: h[1],
+                                  condition: rule.condition,
+                                  condition_value: rule.condition_value,
+                                }
+                              }
+                          
+                    });
+                    }
+
+                }else if(rule.condition === "eq"  ){
+                    if (h[1] === rule.condition_value  ){
+                        res.status(200).send({          
+                            message: "field "+fieldName+" successfully validated.",
+                            status: "success",
+                            data:  {
+                                validation: {
+                                  error: false,
+                                  field: fieldName,
+                                  field_value: h[1],
+                                  condition: rule.condition,
+                                  condition_value: rule.condition_value,
+                                }
+                              }
+                          
+                    });
+
+                    }else{
+                        res.status(400).send({          
+                            message: "field "+fieldName+" failed validation.",
+                            status: "error",
+                            data:  {
+                                validation: {
+                                  error: true,
+                                  field: fieldName,
+                                  field_value: h[1],
+                                  condition: rule.condition,
+                                  condition_value: rule.condition_value,
+                                }
+                              }
+                          
+                    });
+                    }
+
+                }else if(rule.condition === "neq"  ){
+                    if (h[1] !== rule.condition_value  ){
+                        res.status(200).send({          
+                            message: "field "+fieldName+" successfully validated.",
+                            status: "success",
+                            data:  {
+                                validation: {
+                                  error: false,
+                                  field: fieldName,
+                                  field_value: h[1],
+                                  condition: rule.condition,
+                                  condition_value: rule.condition_value,
+                                }
+                              }
+                          
+                    });
+
+                    }else{
+                        res.status(400).send({          
+                            message: "field "+fieldName+" failed validation.",
+                            status: "error",
+                            data:  {
+                                validation: {
+                                  error: true,
+                                  field: fieldName,
+                                  field_value: h[1],
+                                  condition: rule.condition,
+                                  condition_value: rule.condition_value,
+                                }
+                              }
+                          
+                    });
+                    }
+
+                }else if(rule.condition === "gt"  ){
+                    if (h[1] > rule.condition_value  ){
+                        res.status(200).send({          
+                            message: "field "+fieldName+" successfully validated.",
+                            status: "success",
+                            data:  {
+                                validation: {
+                                  error: false,
+                                  field: fieldName,
+                                  field_value: h[1],
+                                  condition: rule.condition,
+                                  condition_value: rule.condition_value,
+                                }
+                              }
+                          
+                    });
+
+                    }else{
+                        res.status(400).send({          
+                            message: "field "+fieldName+" failed validation.",
+                            status: "error",
+                            data:  {
+                                validation: {
+                                  error: true,
+                                  field: fieldName,
+                                  field_value: h[1],
+                                  condition: rule.condition,
+                                  condition_value: rule.condition_value,
+                                }
+                              }
+                          
+                    });
+                    }
+
+                }if (rule.condition === "contains"  ){
+                    if (h[1].includes(rule.condition_value) === true  ){
+                        string.includes(substring)
+                        res.status(200).send({          
+                            message: "field "+fieldName+" successfully validated.",
+                            status: "success",
+                            data:  {
+                                validation: {
+                                  error: false,
+                                  field: fieldName,
+                                  field_value: h[1],
+                                  condition: rule.condition,
+                                  condition_value: rule.condition_value,
+                                }
+                              }
+                          
+                    });
+
+                    }else{
+                        res.status(400).send({          
+                            message: "field "+fieldName+" failed validation.",
+                            status: "error",
+                            data:  {
+                                validation: {
+                                  error: true,
+                                  field: fieldName,
+                                  field_value: h[1],
+                                  condition: rule.condition,
+                                  condition_value: rule.condition_value,
+                                }
+                              }
+                          
+                    });
+                    }
+
+                }
+
                      
              }catch(err){
                 console.log(err)

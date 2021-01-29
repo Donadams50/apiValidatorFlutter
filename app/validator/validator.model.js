@@ -14,11 +14,12 @@ exports.myProfile=()=> {
 
   exports.isRuleValidated= async (req, res, next)=> { 
     const {  rule } = req.body;
-    try{   
+    try{  
+        //console.log (rule.field)
     
         if ( rule) {
             if (  typeof rule === 'object' && rule !== null    ){
-                if (  rule.field && rule.condtion && rule.condition_value   ){
+                if (  rule.field && rule.condition && rule.condition_value  ){
                     if (  rule.field === " " || rule.condtion === " " || rule.condition_value === ""   ){
 
                         res.status(400).send({          
@@ -46,7 +47,6 @@ exports.myProfile=()=> {
     
              } 
 
-                next();
                 
          }else{ 
             
@@ -84,14 +84,17 @@ exports.myProfile=()=> {
   exports.isDataValidated= async (req, res, next)=> { 
     const {  data , rule} = req.body;
            const fieldName = rule.field;
+           console.log(fieldName)
+           console.log( data.hasOwnProperty(fieldName ))
+         //  console.log(typeof data.fieldName)
      try{
         if ( data) {
             
-                if ( typeof data.fieldName === 'undefined'  ){
+                if ( data.hasOwnProperty(fieldName ) === false  ){
                    
 
                         res.status(400).send({          
-                            message: "field "+fieldName+" is missing from data..",
+                            message: "field "+fieldName+" is missing from data.",
                             status: "error",
                             data: null
                           
