@@ -21,7 +21,7 @@ exports.myProfile=()=> {
                     if (  rule.field === " " || rule.condtion === " " || rule.condition_value === ""   ){
 
                         res.status(400).send({          
-                            message: "The required field cannot be empty.",
+                            message: "The required fields cannot be empty.",
                             status: "error",
                             data: null
                           
@@ -70,17 +70,38 @@ exports.myProfile=()=> {
     
   }
 
-
-  exports.isDataValidated= (req, res, next)=> { 
-    const token = req.headers.authorization || req.params.token;
   
-        if (req.user.roleId === 10) {
-         console.log(req.user.role) 
-          next();
+  exports.isDataValidated= (req, res, next)=> { 
+    const {  data , rule} = req.body;
+           const fieldName = rule.field;
+        if ( data) {
+            
+                if ( typeof data.fieldName === 'undefined'  ){
+                   
+
+                        res.status(400).send({          
+                            message: "field "+fieldName+" is missing from data..",
+                            status: "error",
+                            data: null
+                          
+                    });                
+                    
+             }else{ 
+                    
+                next();
+            
+             } 
+
+                
+                
           
         }else{
-          console.log(req.user.role) 
-          res.status(401).json({ status: 401, error: 'Unauthorized to access this resource' });
+            res.status(400).send({          
+                message: "data field is required.",
+                status: "error",
+                data: null
+              
+        });
           
         }
     

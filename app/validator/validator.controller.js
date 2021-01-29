@@ -33,37 +33,20 @@ if (!req.body){
 
     const {  rule , data} = req.body;
   
-    if (  rule  ){
-        if (   data  ){
-        if ( rule==={}    ){
-            res.status(400).send({
-                message:"Incorrect entry format"
-            });
-     }else{  
-              
+   
         
             try{   
                 
                      
-            }catch(err){
+             }catch(err){
                 console.log(err)
-                res.status(500).send({message:"Error while creating office "})
+                res.status(400).send({          
+                    message: "Invalid JSON payload passed.",
+                    status: "error",
+                    data: null
+                  
+            });
             }
-        }
-          }else{
-            res.status(400).send({      
-                message: "data field is required.",
-                status: "error",
-                data: null
-              
-           });
-          }
-    }else{
-        res.status(400).send({          
-                message: "rule field is required.",
-                status: "error",
-                data: null
-              
-        });
-    }
+        
+    
 };
