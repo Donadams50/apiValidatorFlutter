@@ -12,9 +12,10 @@ exports.myProfile=()=> {
     return myProfile;
   }
 
-  exports.isRuleValidated= (req, res, next)=> { 
+  exports.isRuleValidated= async (req, res, next)=> { 
     const {  rule } = req.body;
-  
+    try{   
+    
         if ( rule) {
             if (  typeof rule === 'object' && rule !== null    ){
                 if (  rule.field && rule.condtion && rule.condition_value   ){
@@ -67,13 +68,23 @@ exports.myProfile=()=> {
         });
           
         }
-    
+    }
+    catch(err){
+        console.log(err)
+        res.status(400).send({          
+            message: "Invalid JSON payload passed.",
+            status: "error",
+            data: null
+          
+    });
+    }
   }
 
   
-  exports.isDataValidated= (req, res, next)=> { 
+  exports.isDataValidated= async (req, res, next)=> { 
     const {  data , rule} = req.body;
            const fieldName = rule.field;
+     try{
         if ( data) {
             
                 if ( typeof data.fieldName === 'undefined'  ){
@@ -104,5 +115,14 @@ exports.myProfile=()=> {
         });
           
         }
-    
+       }
+        catch(err){
+            console.log(err)
+            res.status(400).send({          
+                message: "Invalid JSON payload passed.",
+                status: "error",
+                data: null
+              
+        });
+        }
   }
