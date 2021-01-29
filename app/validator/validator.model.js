@@ -6,22 +6,20 @@ const myProfile = {
     "twitter": "@AdamOlasumbo"
   }
 
-
-
 exports.myProfile=()=> {
     return myProfile;
   }
 
+  
+
   exports.isRuleValidated= async (req, res, next)=> { 
     const {  rule } = req.body;
-    try{  
-        //console.log (rule.field)
-    
+     try{  
+
         if ( rule) {
             if (  typeof rule === 'object' && rule !== null    ){
                 if (  rule.field && rule.condition && rule.condition_value  ){
                     if (  rule.field === " " || rule.condtion === " " || rule.condition_value === ""   ){
-
                         res.status(400).send({          
                             message: "The required fields cannot be empty.",
                             status: "error",
@@ -31,10 +29,11 @@ exports.myProfile=()=> {
                         
                         
                  }else{
+
                     next();
-                 }
-                
-                    
+                 
+                  }
+                                   
                     
              }else{ 
                 

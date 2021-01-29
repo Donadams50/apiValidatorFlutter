@@ -176,9 +176,9 @@ if (!req.body){
                     }
 
                 }if (rule.condition === "contains"  ){
-                    if (h[1].includes(rule.condition_value) === true  ){
-                        string.includes(substring)
-                        res.status(200).send({          
+                    console.log(h[1].toString().includes(rule.condition_value.toString()))
+                    if (h[1].toString().includes(rule.condition_value.toString()) === true  ){                        
+                       res.status(200).send({          
                             message: "field "+fieldName+" successfully validated.",
                             status: "success",
                             data:  {
@@ -210,6 +210,13 @@ if (!req.body){
                     });
                     }
 
+                }else{
+                    res.status(400).send({          
+                        message: "Invalid JSON payload passed.",
+                        status: "error",
+                        data: null
+                      
+                });
                 }
 
                      
